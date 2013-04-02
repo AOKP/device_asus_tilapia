@@ -16,8 +16,7 @@
 
 # rild
 PRODUCT_PACKAGES := \
-    rild \
-    BasicSmsReceiver
+    rild
 
 PRODUCT_COPY_FILES := \
     device/asus/tilapia/init.tilapia.rc:root/init.grouper.rc \
