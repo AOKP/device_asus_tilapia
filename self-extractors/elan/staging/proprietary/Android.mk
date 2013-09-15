@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2010 The Android Open Source Project
+# Copyright (C) 2011 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,21 +11,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# rild
-PRODUCT_PACKAGES := \
-    rild
+LOCAL_PATH := $(call my-dir)
 
-PRODUCT_COPY_FILES := \
-    device/asus/tilapia/fstab.grouper:root/fstab.grouper \
-    device/asus/tilapia/init.tilapia.rc:root/init.grouper.rc
+ifeq ($(TARGET_DEVICE),tilapia)
 
-DEVICE_PACKAGE_OVERLAYS := \
-    device/asus/tilapia/overlay
+include $(CLEAR_VARS)
+LOCAL_MODULE := touch_fw
+LOCAL_SRC_FILES := touch_fw.ekt
+LOCAL_MODULE_SUFFIX := .ekt
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/firmware
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_OWNER := elan
+include $(BUILD_PREBUILT)
 
-# the actual meat of the device-specific product definition
-$(call inherit-product, device/asus/grouper/device-common.mk)
-
-# inherit from the non-open-source side, if present
-$(call inherit-product-if-exists, vendor/asus/tilapia/device-vendor.mk)
+endif
