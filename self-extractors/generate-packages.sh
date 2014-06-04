@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (C) 2010 The Android Open Source Project
+# Copyright 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@
 # 736095 = JWR66U
 # 737497 = JWR66V
 # end jb-mr2-dev
-BRANCH=jb-mr2-dev
+BRANCH=klp-dev
 if test $BRANCH = jb-mr1-dev
 then
   ZIP=nakasig-ota-561924.zip
@@ -53,6 +53,11 @@ then
   ZIP=nakasig-ota-737497
   BUILD=jwr66v
 fi # jb-mr2-dev
+if test $BRANCH = klp-dev
+then
+  ZIP=nakasig-ota-937116
+  BUILD=kot49h
+fi # klp-dev
 ROOTDEVICE=tilapia
 DEVICE=tilapia
 MANUFACTURER=asus
@@ -67,7 +72,6 @@ do
   case $COMPANY in
   asus)
     TO_EXTRACT="\
-            system/bin/btmacreader \
             system/bin/sensors-config \
             system/etc/apns-conf.xml \
             system/lib/hw/camera.tegra3.so \
